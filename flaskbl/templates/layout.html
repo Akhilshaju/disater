@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+
+</script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+
+     <!-- //Meta tag Keywords -->
+    <!-- Custom-Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" media="all" />
+    <!-- Style-CSS -->
+    <!-- font-awesome-icons -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome-icons -->
+    <!-- /Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <!-- //Fonts -->
+
+    {% if title %}
+    <title>DISASTER MANAGEMENT SYSTEM - {{ title }} </title>
+    {% else %}
+    <title>FLASHBLOG</title>
+    {% endif %}
+</head>
+<body>
+  <header class="header-w3pvt">
+    <div class="container-fluid inner-sec-w3ls">
+        <div class="header d-lg-flex justify-content-between align-items-center">
+            <!-- logo -->
+            <h1 class="logo text-center">
+                <a href="index.html">DSM
+                </a>
+            </h1>
+                          <!-- nav -->
+                          <div class="nav_w3ls">
+                            <nav>
+                                <label for="drop" class="toggle toogle-2">Menu</label>
+                                <input type="checkbox" id="drop" />
+                                <ul class="menu">
+                                    <li class="active ml-0"><a href="/">Home</a></li>
+                                    {% if current_user.is_authenticated %}
+                                   <li> <a class="nav-item nav-link" href="{{ url_for('new_post') }}">New Post</a></li>
+                                    <li><a href="{{ url_for ('account') }}">Account</a></li>
+                                    <li><a href="{{ url_for ('logout') }}">Log Out</a></li>
+                                    {% else %}
+                                        <li><a href="{{ url_for ('register') }}">Register</a></li>
+    
+                                         <li><a href="{{ url_for ('login') }}">Log In</a></li>
+                                    {% endif %}
+                                    <li>
+                                        <!-- First Tier Drop Down -->
+                                        <label for="drop-2" class="toggle toggle-drop">Sections <span class="fa fa-angle-down" aria-hidden="true"></span>
+                                        </label>
+                                        <a href="#">Sections <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                                        <input type="checkbox" id="drop-2" />
+                                        <ul class="list-unstyled">
+                                            <li><a href="/#why" class="drop-text">Prepare Now</a></li>
+                                            <li><a href="/#history" class="drop-text">Precautions</a></li>
+                                            <li><a href="{{ url_for ('updates') }}" class="drop-text">Updates</a></li>
+                                            <li><a href="/#contact" class="drop-text">Join Us</a></li>
+                                            <li><a href="/#test" class="drop-text">Testimonials</a></li>
+                                        </ul>
+                                    </li>
+    
+                                    <li><a href="/#gallery">Gallery</a></li>
+                                    <li><a href="/#contact"></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- //nav -->
+
+        </div>
+    </div>
+    </header>
+    <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8">
+            {% block content %}{% endblock %}
+          </div>
+          <div class="col-md-4">
+          </div>
+        </div>
+    </main>
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
